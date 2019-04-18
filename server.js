@@ -11,6 +11,7 @@ const app = express();
 
 // log the http layer
 app.use(morgan('common'));
+app.use(express.static("public"));
 
 // we're going to add some items to ShoppingList
 // so there's some data to look at
