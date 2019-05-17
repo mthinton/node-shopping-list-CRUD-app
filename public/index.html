@@ -4,11 +4,37 @@
         <title>
             Hello, world
         </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script>
+                document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+                var setNptTechAdblockerCookie = function(adblocker) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + 60 * 5 * 1000);
+                    document.cookie = "__adblocker=" + (adblocker ? "true" : "false") + "; expires=" + d.toUTCString() + "; path=/";
+                };
+                var script = document.createElement("script");
+                script.setAttribute("async", true);
+                script.setAttribute("src", "//www.npttech.com/advertising.js");
+                script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
+                document.getElementsByTagName("head")[0].appendChild(script);
+            </script>
         <script type="text/javascript" src="/client.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <p>hello, world</p>
-        <script>(function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src;var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=bW69IEsHwA");</script>
+        <div id="container">
+        <p>bon jour, le monde</p>
+        <img src="http://staging3-cgi.texterity.com/cgi-bin/pwf_eds.cgi?transaction_type=subscription&email_address=mthinton@gmail.com&first_name=Matthew&last_name=Hinton&publisher=mitsloan&publication=mitsmr&email_tt_body=mitsloan-newsubscriber.html&email_tt_subject=mitsloan-newsubscriber.sub&email_type=multipart&email_from_field=MIT%20Sloan%20Management%20Review%20%3Cmitsloan@texterity.com%3E&urp_to=bfugere@texterity.com&user_action=sub" height="400" width="400">
+    </div>
+    
+        <script>
+
+            tp = window.tp || [];
+
+            tp.push(["setUsePianoIdUserProvider", true ]);
+
+        (function(src){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src=src; var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})("https://sandbox.tinypass.com/xbuilder/experience/load?aid=bW69IEsHwA");
+        </script>
     </body>
 </html>
 
