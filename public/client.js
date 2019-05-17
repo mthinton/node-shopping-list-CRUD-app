@@ -8,18 +8,8 @@ tp.push(["addHandler", "customEvent", function(event, b, c, d) {
         var iframeId;
 
         params = JSON.parse(event.params.params);
-        
-        console.log(event.params)
-//          email: "mthinton@gmail.com",
-//         params: {
-//         aid: "bW69IEsHwA"
-// displayMode: "modal"
-// iframeId: "offer-0-4vK8A"
-// offerId: "OFQZD7CJBSVC"
-// templateId: "OTSXLYVJH55E"
-// url: "http://localhost:8080/"
-// width: 1898
-//    }
+        alert("Open up Dev Tools console to see event object and its params")
+        console.log(event.params);
 
         iframeId = params.iframeId;
         userEmail = event.params.email;
@@ -57,8 +47,3 @@ tp.push(["init", function() {
     customEvent: function(params) {}
     });
 }]);
-
- // tp.myaccount.show({
-    //     displayMode: "inline",
-    //     containerSelector: "#container"
-    // });
