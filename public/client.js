@@ -8,9 +8,9 @@ tp.push(["addHandler", "customEvent", function(event, b, c, d) {
         var iframeId;
 
         params = JSON.parse(event.params.params);
-        alert("Open up Dev Tools console to see event object and its params")
+        
         console.log(event.params);
-
+        
         iframeId = params.iframeId;
         userEmail = event.params.email;
         url =  'http://localhost:8080/';
@@ -30,20 +30,47 @@ tp.push(["addHandler", "customEvent", function(event, b, c, d) {
         })
 
         break;
+
+        case 'update-customField':
+            
+            var aid;
+            var uid;
+            var params;
+
+            params = JSON.parse(event.params.params);
+            userData = {
+                aid:params.aid,
+                uid:tp.pianoId.getUser().uid,
+                api_token: '7BOuAWqdVzJtY0PFCWINVXHsOwqHzpXXKyzUaSdG'
+            }
+            
+            url = 'https://sandbox.tinypass.com/api/v3/publisher/user/get';
+
+            fetch(url, {
+                method:'POST',
+                body: JSON.stringify(userData),
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080'}
+            }).then(function(response) {return response.json();
+            }).then(function(data) {
+                console.log(data);
+            })
     }
 }])
 
 tp.push(["init", function() {
+    
+    tp.pianoId.show({
+        
+        profileUpdate: function(){
+            var callback = function(response){
+                console.log(response)
+            };
+            tp.api.callApi('https://sandbox.tinypass.com/api/v3/publisher/user/get?aid=bW69IEsHwA&uid=PNIyE513Ppq0oj7&api_token=7BOuAWqdVzJtY0PFCWINVXHsOwqHzpXXKyzUaSdG', callback)
+        }
+    })
 
-    tp.offer.show({
-    offerId: "OFQZD7CJBSVC",
-    templateId: "OT7GV14BCCWI",
-    displayMode: "modal",
-    containerSelector: "",
-    termIds: [],
-    loginRequired: function() {},
-    close: function() {},
-    complete: function(params) {},
-    customEvent: function(params) {}
-    });
+    tp.myaccount.show({
+        displayMode: "inline",
+        containerSelector: "#container"
+        });
 }]);
